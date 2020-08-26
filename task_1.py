@@ -13,16 +13,14 @@ def object_iter(array):
     Рекурсивная функция для раскрытия основных итерируемых объектов
     '''
     for z in array:
-        if (type(z) == list or type(z) == tuple or
-                type(z) == set or type(z) == frozenset):
+        if isinstance(z, (dict, list, tuple, set, frozenset)):
             result.append(getsizeof(z))
             object_iter(z)
         elif type(z) == dict:
             result.append(getsizeof(z))
             for k, v in z.items():
                 result.append(getsizeof(k))
-                if (type(v) == list or type(v) == tuple or
-                        type(v) == set or type(v) == frozenset):
+                if isinstance(z, (dict, list, tuple, set, frozenset)):
                     result.append(getsizeof(v))
                     object_iter(v)
                 else:
