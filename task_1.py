@@ -20,7 +20,7 @@ def object_iter(array):
             result.append(getsizeof(z))
             for k, v in z.items():
                 result.append(getsizeof(k))
-                if isinstance(z, (dict, list, tuple, set, frozenset)):
+                if isinstance(v, (dict, list, tuple, set, frozenset)):
                     result.append(getsizeof(v))
                     object_iter(v)
                 else:
